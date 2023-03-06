@@ -2,24 +2,24 @@ ibm-apic-gtw-instance:
   ibmapicgtwinstance:
     name: gateway
     spec:
-      profile: n1xc4.m8
+      profile: n1xc1.m8
       apicGatewayServiceV5CompatibilityMode: true
       gatewayEndpoint:
         annotations:
           certmanager.k8s.io/issuer: ingress-issuer
         hosts:
-          - name: gw-v5c.<your-openshift-domain>
+          - name: gw-v5c.apps.philc-sandbox.cp.fyre.ibm.com
             secretName: gateway-endpoint-secret
       gatewayManagerEndpoint:
         annotations:
           certmanager.k8s.io/issuer: ingress-issuer
         hosts:
-          - name: gwmanager-v5c.<your-openshift-domain>
+          - name: gwmanager-v5c.apps.philc-sandbox.cp.fyre.ibm.com
             secretName: gateway-manager-endpoint-secret
       apicGatewayServiceTLS:
-        secretName: gateway-service
+        secretName: gateway-service-v5c
       apicGatewayPeeringTLS:
-        secretName: gateway-peering
+        secretName: gateway-peering-v5c
       datapowerLogLevel: 3
       license:
         accept: true
@@ -28,7 +28,7 @@ ibm-apic-gtw-instance:
       tokenManagementService:
         enabled: true
         storage:
-          storageClassName: <your-block-storage-class>
+          storageClassName: rook-ceph-block
           volumeSize: 30Gi
       adminUser:
         secretName: admin-secret
