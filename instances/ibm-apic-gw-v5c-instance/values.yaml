@@ -45,3 +45,5 @@ ibm-apic-gtw-instance:
       #     targetCPUUtilizationPercentage: 80
       #     targetMemoryUtilizationPercentage: 80
       #   method: HPA
+      webGUIManagementEnabled: true
+      webGUIManagementPort: 9090
